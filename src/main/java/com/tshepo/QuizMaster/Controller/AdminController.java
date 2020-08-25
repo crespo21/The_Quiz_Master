@@ -14,25 +14,25 @@ public class AdminController {
 
     //creating a get mapping that retrieves all
     // the recruits detail from the database
-    @GetMapping("/recruits")
+    @GetMapping("/admins")
     private List<Admin> getAllRecruits(){
         return this.adminService.getAllAdmin();
     }
 
     //creating a get mapping that retrieves the detail of a specific recruit
-    @GetMapping("/recruit/{id}")
+    @GetMapping("/admins/{id}")
     private Admin getRecruit(@PathVariable("id") long id){
         return adminService.getAdminById(id);
     }
 
     //creating a delete mapping that deletes a specific recruit
-    @DeleteMapping("/recruit/{id}")
+    @DeleteMapping("/admins/{id}")
     public void deleteRecruit(@PathVariable("id") long id){
         adminService.delete(id);
     }
 
     //creating post mapping that post the recruit detail in the database
-    @PostMapping("/recruit")
+    @PostMapping("/admins")
     public long saveRecruit(@RequestBody Admin admin){
         adminService.saveOrUpdate(admin);
         return admin.getAdminId();

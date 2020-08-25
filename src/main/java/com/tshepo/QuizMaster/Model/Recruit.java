@@ -1,12 +1,12 @@
 package com.tshepo.QuizMaster.Model;
 
 import javax.persistence.*;
-import org.hibernate.annotations.Table;
+
 
 import java.util.List;
 
 @Entity
-@Table(appliesTo = "Recruit")
+@Table
 public class Recruit {
     @Id
     @GeneratedValue
@@ -101,5 +101,11 @@ public class Recruit {
 
     public void setQuiz(List<Quiz> quiz) {
         this.quiz = quiz;
+    }
+    @Override
+    public String toString(){
+        return "Recruit [id :  " + recruitId + " Name: " + recruitName + " Surname : " + recruitSurnameName +
+                " Department : " + recruitDepartment + " Email : " + recruitEmail+"]";
+
     }
 }

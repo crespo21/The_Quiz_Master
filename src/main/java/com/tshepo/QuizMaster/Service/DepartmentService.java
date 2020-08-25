@@ -1,6 +1,5 @@
 package com.tshepo.QuizMaster.Service;
 
-import com.tshepo.QuizMaster.Model.Admin;
 import com.tshepo.QuizMaster.Model.Department;
 import com.tshepo.QuizMaster.Repository.DepartmentRepositoryInterface;
 import org.springframework.stereotype.Service;

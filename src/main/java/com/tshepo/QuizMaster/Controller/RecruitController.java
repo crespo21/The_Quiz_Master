@@ -2,6 +2,7 @@ package com.tshepo.QuizMaster.Controller;
 
 import com.tshepo.QuizMaster.Model.Recruit;
 import  com.tshepo.QuizMaster.Service.RecruitService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,11 @@ public class RecruitController {
     
     RecruitService recruitService;
 
+    @Autowired
+    public RecruitController(RecruitService recruitService) {
+        this.recruitService = recruitService;
+    }
+
     //creating a get mapping that retrieves all
     // the recruits detail from the database
     @GetMapping("/recruits")
@@ -21,7 +27,7 @@ public class RecruitController {
     }
 
     //creating a get mapping that retrieves the detail of a specific recruit
-    @PostMapping("/recruits/{id}")
+    @GetMapping("/recruits/{id}")
     private Recruit getRecruit(@PathVariable("id") long id){
      return recruitService.getRecruitById(id);
     }
@@ -33,7 +39,7 @@ public class RecruitController {
     }
 
     //creating post mapping that post the recruit detail in the database
-    @PostMapping("/recruits")
+    @PostMapping("/recruits/save")
     public long saveRecruit(@RequestBody Recruit recruit){
         recruitService.saveOrUpdate(recruit);
         return recruit.getRecruitId();

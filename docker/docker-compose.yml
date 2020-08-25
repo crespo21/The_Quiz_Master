@@ -1,18 +1,18 @@
-version: "3.3"
+version: '3.1'
 services:
-  postgres:
-    image: postgres:9.6
+  app:
+    container_name: app-springboot-postgresql
+    image: app-springboot-postgresql
+    build: ../src/main/java/com/tshepo/QuizMaster
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbpostgresql
+  dbpostgresql:
+    image: postgres
+    ports:
+      - "5432:5432"
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=pass
-      - POSTGRES_DB=db
-    volumes:
-      - ./gitignore/postgresql:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-
-  adminer:
-    image: quiz_master
-    restart: always
-    ports:
-      - 8080:8080
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb

@@ -4,18 +4,20 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Admin")
+@Table
 public class Admin {
     @Id
-    @Column(name = "adminId")
+    @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long adminId;
-    @Column (name = "adminName")
+    @Column
     private String adminName;
-    @Column (name = "adminSurnameName")
+    @Column
     private String adminSurnameName;
-    @Column (name = "adminDepartment")
+    @Column
     private String adminDepartment;
+    @Column
+    private String adminEmail;
     @Column
     private String adminPassword;
 
@@ -89,6 +91,13 @@ public class Admin {
 
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
+    }
+
+    @Override
+    public String toString(){
+       return "Admin [id :  " + adminId + " Name: " + adminName + " Surname : " + adminSurnameName +
+               " Department : " + adminDepartment + " Email : " + adminEmail +"]";
+
     }
 }
 

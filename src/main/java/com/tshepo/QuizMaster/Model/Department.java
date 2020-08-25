@@ -63,4 +63,9 @@ public class Department {
    public void setQuiz(List<Quiz> quiz) {
       this.quiz = quiz;
    }
+
+   @Override
+   public String toString(){
+      return "Department [id :  " + departmentID + " Name: " + departmentID +"]";
+   }
 }

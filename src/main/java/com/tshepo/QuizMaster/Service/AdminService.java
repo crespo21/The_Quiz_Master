@@ -21,7 +21,7 @@ public class AdminService {
 
     //getting a specific record
     public Admin getAdminById(long id) {
-        return adminRepositoryInterface.findById(Long.parseLong(String.valueOf(10))).get();
+        return adminRepositoryInterface.findById((id)).get();
     }
     //save or update a specific record
     public void saveOrUpdate(Admin admin){

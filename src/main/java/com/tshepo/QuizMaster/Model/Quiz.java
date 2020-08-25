@@ -85,4 +85,10 @@ public class Quiz {
     public void setDepartment(Department department) {
         this.department = department;
     }
+
+    @Override
+    public String toString(){
+        return "Quiz [id :  " + quizId + " Questions: " + questions + " Choices : " + choices +
+                " Explanation : " + explanation + "]";
+    }
 }
