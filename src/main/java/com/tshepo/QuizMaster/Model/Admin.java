@@ -14,8 +14,7 @@ public class Admin {
     private String adminName;
     @Column
     private String adminSurnameName;
-    @Column
-    private String adminDepartment;
+
     @Column
     private String adminEmail;
     @Column
@@ -53,14 +52,6 @@ public class Admin {
         this.adminSurnameName = adminSurnameName;
     }
 
-    public String getAdminDepartment() {
-        return adminDepartment;
-    }
-
-    public void setAdminDepartment(String adminDepartment) {
-        this.adminDepartment = adminDepartment;
-    }
-
     public String getAdminPassword() {
         return adminPassword;
     }
@@ -92,12 +83,20 @@ public class Admin {
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
     }
+    public String getAdminEmail() {
+        return adminEmail;
+    }
 
+    public void setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
+    }
     @Override
     public String toString(){
        return "Admin [id :  " + adminId + " Name: " + adminName + " Surname : " + adminSurnameName +
-               " Department : " + adminDepartment + " Email : " + adminEmail +"]";
+               " Department : " + department + " Email : " + adminEmail +"]";
 
     }
+
+
 }
 

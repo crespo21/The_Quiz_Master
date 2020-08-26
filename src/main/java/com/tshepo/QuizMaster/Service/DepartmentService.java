@@ -6,30 +6,49 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartmentService {
 
     DepartmentRepositoryInterface departmentRepositoryInterface;
 
-    //getting all student records
-    public List<Department> getAllRecruit(){
-        List<Department> departments = new ArrayList<>();
-        departmentRepositoryInterface.findAll().forEach(departments::add);
-        return departments;
+    //getting all department records
+    public List<Department> getAllDepartment(){
+        List<Department> departmentList =departmentRepositoryInterface.findAll();
+        if (departmentList.size() > 0){
+            return departmentList;
+        }
+        else{
+            return new ArrayList<>();
+        }
     }
 
     //getting a specific record
-    public Department getRecruitById(long departmentId) {
-        return departmentRepositoryInterface.findById(departmentId).get();
+    public Department getDepartmentById(long departmentId) throws Exception {
+        Optional<Department> optionalDepartment = departmentRepositoryInterface.findById(departmentId);
+        if (optionalDepartment.isPresent()){
+            return optionalDepartment.get();
+        }else {
+            throw new Exception( "no department record for given id");
+        }
     }
-
-    public void saveOrUpdate(Department department){
-        departmentRepositoryInterface.save(department);
-    }
-
-    //deleting a specific record
-    public void delete(Long departmentId){
-        departmentRepositoryInterface.deleteById(departmentId);
+    //save  specific records
+    public Department saveOrUpdate(Department department){
+        Optional<Department> optionalDepartment = departmentRepositoryInterface.findById(department.getDepartmentID());
+        if(optionalDepartment.isPresent()){
+            Department newDepartment = optionalDepartment.get();
+            newDepartment.setDepartmentID(department.getDepartmentID());
+            newDepartment.setDepartmentName(department.getDepartmentName());
+            newDepartment.setAdmin(department.getAdmin());
+            newDepartment.setRecruit(department.getRecruit());
+            newDepartment.setQuiz(department.getQuiz());
+            newDepartment = departmentRepositoryInterface.save(newDepartment);
+            return newDepartment;
+        }
+        else {
+            department = departmentRepositoryInterface.save(department);
+            return department;
+        }
     }
 }

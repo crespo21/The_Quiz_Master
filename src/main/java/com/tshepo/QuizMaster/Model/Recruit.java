@@ -1,8 +1,6 @@
 package com.tshepo.QuizMaster.Model;
 
 import javax.persistence.*;
-
-
 import java.util.List;
 
 @Entity
@@ -15,8 +13,6 @@ public class Recruit {
     private String recruitName;
     @Column
     private String recruitSurnameName;
-    @Column
-    private String recruitDepartment;
     @Column
     private String recruitEmail;
     @Column
@@ -54,13 +50,6 @@ public class Recruit {
         this.recruitSurnameName = recruitSurnameName;
     }
 
-    public String getRecruitDepartment() {
-        return recruitDepartment;
-    }
-
-    public void setRecruitDepartment(String recruitDepartment) {
-        this.recruitDepartment = recruitDepartment;
-    }
 
     public String getRecruitEmail() {
         return recruitEmail;
@@ -78,9 +67,7 @@ public class Recruit {
         this.recruitPassword = recruitPassword;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
+
 
     public void setDepartment(Department department) {
         this.department = department;
@@ -105,7 +92,11 @@ public class Recruit {
     @Override
     public String toString(){
         return "Recruit [id :  " + recruitId + " Name: " + recruitName + " Surname : " + recruitSurnameName +
-                " Department : " + recruitDepartment + " Email : " + recruitEmail+"]";
+                " Department : " + department + " Email : " + recruitEmail+"]";
 
+    }
+
+    public Department getDepartment() {
+        return department;
     }
 }
