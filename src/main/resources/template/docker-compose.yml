@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  app:
+    container_name: app-springboot-postgresql
+    image: postgres:apline
+    build: ./
+    ports:
+      - "9090:9090"
+    depends_on:
+      - dbpostgresql
+  dbpostgresql:
+    image: postgres:apline
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=quizmaster

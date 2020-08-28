@@ -33,7 +33,7 @@ public class QuizController {
     }
 
     //creating a get mapping that retrieves the detail of a specific quiz
-    @GetMapping("/{id}")
+    @GetMapping("quiz/{id}")
     public ResponseEntity<Quiz> getQuizById(@PathVariable("id") Long id) throws Exception {
         Quiz quiz = quizService.getQuizById(id);
         return new ResponseEntity<>(quiz, new HttpHeaders(), HttpStatus.OK);
